@@ -166,6 +166,7 @@ void bubble_sort(int arr[], int n) {
 
 // 8. Matrix multiplication
 void multiply_matrices(int a[][10], int b[][10], int res[][10], int r1, int c1, int r2, int c2) {
+    //T TODO: check this out
     if (c1 != r2) {
         printf("Invalid matrix dimensions for multiplication\n");
         return;

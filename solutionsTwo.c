@@ -18,6 +18,7 @@ void print_reverse(char *str) {
 // 12. Pointer to pointer demo
 void pointer_to_pointer_demo() {
     int x = 5;
+    printf("Value of x before modification: %d\n", x);
     int *p = &x;
     int **pp = &p;
     **pp = 10;
@@ -26,7 +27,7 @@ void pointer_to_pointer_demo() {
 
 // 13. Allocate array with malloc and print
 void malloc_array() {
-    int *arr = (int *)malloc(10 * sizeof(int));
+    int *arr = (int *)malloc(10 * sizeof(int)); // TODO: review malloc sintax here
     if (!arr) {
         printf("Memory allocation failed\n");
         return;
@@ -48,7 +49,7 @@ void realloc_array() {
     for (int i = 0; i < 10; i++)
         arr[i] = i + 1;
 
-    arr = (int *)realloc(arr, 20 * sizeof(int));
+    arr = realloc(arr, 20 * sizeof(int)); // TODO: remember to assign realloc result
     if (!arr) return;
 
     for (int i = 10; i < 20; i++)
@@ -68,14 +69,17 @@ void swap(int *a, int *b) {
 }
 
 // 16. strlen using pointer arithmetic
-int my_strlen(const char *str) {
-    const char *p = str;
-    while (*p) p++;
-    return p - str;
+int my_strlen(char *str){
+    int len = 0;
+    while (*str!='\0'){
+        len++;
+        str++;
+    }
+    return len;
 }
 
 // 17. 2D array access using pointer-to-pointer
-void print_2d_array(int (*arr)[3], int rows) {
+void print_2d_array(int (*arr)[3], int rows) { // TODO: rewiew this
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < 3; j++)
             printf("arr[%d][%d] = %d\n", i, j, *(*(arr + i) + j));

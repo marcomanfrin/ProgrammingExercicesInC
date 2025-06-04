@@ -14,23 +14,14 @@ divisor (GCD). Use this function in a main program where you read two integers a
 9. Declare an integer variable and an integer pointer. Assign the address of the variable to the pointer. Print the variable's value using both the variable name and dereferencing the pointer
 10. Create an integer array of 5 elements. Use a pointer to traverse the array and print each  element using pointer arithmetic (incrementing the pointer) 
 11. Write a program that takes a string input from the user, and prints the string backwards using pointer manipulation only (no indexing)
-
 12. Write a program that declares a pointer to an integer pointer. Assign values such that changing the value via the pointer-to-pointer changes the original integer variable. Print the values to verify
-
 13. Write a program that allocates memory for an array of 10 integers using malloc(), fills the array with the first 10 natural numbers, prints them, and then frees the memory
-
 14. Modify the previous program to double the size of the array using realloc(), fill the new slots with the next 10 natural numbers, print all 20 numbers, then free the memory
-
 15. Implement a function that swaps two integers using pointers. The function should take two integer pointers as parameters and swap the values they point to. Demonstrate this in the main program
-
 16. Implement your own strlen(). Write a function that calculates the length of a string using pointer arithmetic only, without indexing
-
 17. Declare a 2D array of integers and access elements using pointer-to-pointer notation. Print the entire 2D array using this method
-
 18. Write a program that declares a function pointer to a function that takes two integers and returns an integer. Use it to point to functions implementing addition and multiplication and demonstrate calling through the pointer
-
 19. Write a program that creates a text file called output.txt and writes a simple message inside it, e.g. "Hello, File System!ˮ
-
 20. Write a program that opens the file output.txt created in Exercise 1, reads its content, and prints it on the screen
 
 21. Write a program that copies the content of a text file (input.txt) into another file (copy.txt)
