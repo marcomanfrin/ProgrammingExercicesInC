@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 /*
+20
 Write a program that opens the file output.txt, 
 reads its content, and prints it on the screen
 */
