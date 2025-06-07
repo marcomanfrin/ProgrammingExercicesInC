@@ -27,7 +27,7 @@ void pointer_to_pointer_demo() {
 
 // 13. Allocate array with malloc and print
 void malloc_array() {
-    int *arr = (int *)malloc(10 * sizeof(int)); // TODO: review malloc sintax here
+    int *arr = /*(int *)*/malloc(10 * sizeof(int)); // cast isnt mandatory
     if (!arr) {
         printf("Memory allocation failed\n");
         return;
@@ -79,7 +79,7 @@ int my_strlen(char *str){
 }
 
 // 17. 2D array access using pointer-to-pointer
-void print_2d_array(int (*arr)[3], int rows) { // TODO: rewiew this
+void print_2d_array(int (*arr)/*[]*/[3], int rows) { // TODO: rewiew this
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < 3; j++)
             printf("arr[%d][%d] = %d\n", i, j, *(*(arr + i) + j));
