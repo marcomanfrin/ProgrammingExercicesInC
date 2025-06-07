@@ -1,4 +1,4 @@
-#Exercices for the exam of OS programming#
+### Exercices for the exam of OS programming
 
 These exercices are designed to support learning and are a great help in preparing for the final exam. The more challenging exercises also serve as an in-depth exploration for those who wish to deepen their understanding beyond the core material
 
@@ -23,21 +23,13 @@ divisor (GCD). Use this function in a main program where you read two integers a
 18. Write a program that declares a function pointer to a function that takes two integers and returns an integer. Use it to point to functions implementing addition and multiplication and demonstrate calling through the pointer
 19. Write a program that creates a text file called output.txt and writes a simple message inside it, e.g. "Hello, File System!ˮ
 20. Write a program that opens the file output.txt created in Exercise 1, reads its content, and prints it on the screen
-
 21. Write a program that copies the content of a text file (input.txt) into another file (copy.txt)
-
 22. Write a program that reads a text file and counts the number of lines, words, and characters it contains
-
 23. Modify the program from Exercise 1 to append a new line of text to the existing file without overwriting the current content
-
 24. Write a program that receives a file name as input and checks if the file is readable, writable, and executable by the current user
-
 25. Create a program that writes an array of integers to a binary file and then reads back the data from the binary file to verify correctness
-
 26. Write a program that appends log entries (with timestamps) to a log file every time it is run
-
 27. Write a program that lists all files in a given directory (use POSIX functions, so this is Linux/Unix specific)
-
 28. Write a C program that prints the Process ID (PID) and Parent Process ID (PPID) of the running process
 
 29. Write a program that creates a child process using fork(). The parent process should print its PID and the childʼs PID. The child should print its own PID and PPID. Make sure the parent waits for the child to finish

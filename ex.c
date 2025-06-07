@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <time.h>
 
 /*
-20
-Write a program that opens the file output.txt, 
-reads its content, and prints it on the screen
+Write a C program that prints the Process ID (PID) and Parent Process ID (PPID) of the running process
 */
 
+
 int main() {
-    FILE *f = fopen("output.txt", "r");
-    char c;
-    while ((c=fgetc(f))!=EOF){
-        putchar(c);
-    }
-    fclose(f);
+    pid_t pid;
+    pid = fork (); 
+    pid_t ppid = getpid();
+    printf("PID: %d, PPID: %d\n", pid, ppid);
     return 0;
 }

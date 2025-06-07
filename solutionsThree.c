@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <time.h>
 
 // 21. Copy contents of input.txt to copy.txt
 void copy_file() {
@@ -40,6 +41,8 @@ void count_file_stats(const char *filename) {
         prev = ch;
     }
     fclose(f);
+    words += 1;
+    lines += 1;
     printf("Lines: %d, Words: %d, Characters: %d\n", lines, words, chars);
 }
 
@@ -66,7 +69,7 @@ void check_file_permissions(const char *filename) {
 void binary_file_demo() {
     int arr[5] = {10, 20, 30, 40, 50};
     FILE *f = fopen("data.bin", "wb");
-    fwrite(arr, sizeof(int), 5, f);
+    fwrite(arr, sizeof(int), 5, f); // TODO: review
     fclose(f);
 
     int read_arr[5];
@@ -83,14 +86,14 @@ void binary_file_demo() {
 void append_log() {
     FILE *f = fopen("log.txt", "a");
     if (!f) return;
-    time_t t = time(NULL);
+    time_t t = time(NULL); // TODO: remeber time
     fprintf(f, "Log entry at: %s", ctime(&t));
     fclose(f);
 }
 
 // 27. List all files in a directory
 void list_directory(const char *dirname) {
-    DIR *dir = opendir(dirname);
+    DIR *dir = opendir(dirname); // TODO: posix
     if (!dir) {
         printf("Cannot open directory.\n");
         return;
