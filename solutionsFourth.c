@@ -14,7 +14,8 @@
 #define SEM_CONS "/sem_cons"
 
 // 31. Producer-consumer using POSIX shared memory and semaphores
-void producer_consumer() {
+void producer_consumer()
+{
     int shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
     ftruncate(shm_fd, sizeof(int));
     int *shm_ptr = mmap(0, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
@@ -24,12 +25,15 @@ void producer_consumer() {
 
     pid_t pid = fork();
 
-    if (pid == 0) { // Consumer
+    if (pid == 0)
+    { // Consumer
         sem_wait(sem_cons);
         printf("Consumer read: %d\n", *shm_ptr);
         sem_post(sem_prod);
         exit(0);
-    } else if (pid > 0) { // Producer
+    }
+    else if (pid > 0)
+    { // Producer
         sem_wait(sem_prod);
         *shm_ptr = 42;
         printf("Producer wrote: 42\n");
@@ -45,18 +49,22 @@ void producer_consumer() {
 }
 
 // 32. Pipe communication
-void pipe_communication() {
+void pipe_communication()
+{
     int fd[2];
     pipe(fd);
     pid_t pid = fork();
-    if (pid == 0) {
+    if (pid == 0)
+    {
         close(fd[1]);
         char buffer[100];
         read(fd[0], buffer, sizeof(buffer));
         printf("Child received: %s\n", buffer);
         close(fd[0]);
         exit(0);
-    } else {
+    }
+    else
+    {
         close(fd[0]);
         const char *msg = "Hello from parent!";
         write(fd[1], msg, strlen(msg) + 1);
@@ -66,13 +74,15 @@ void pipe_communication() {
 }
 
 // 33. Simple thread
-void *print_thread(void *arg) {
+void *print_thread(void *arg)
+{
     printf("Hello from thread\n");
     return NULL;
 }
 
 // 34. Thread with argument
-void *thread_with_arg(void *arg) {
+void *thread_with_arg(void *arg)
+{
     int val = *(int *)arg;
     printf("Thread received: %d, multiplied: %d\n", val, val * 2);
     return NULL;
@@ -82,10 +92,13 @@ void *thread_with_arg(void *arg) {
 int counter = 0;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
-void *print_even(void *arg) {
-    while (counter <= 20) {
+void *print_even(void *arg)
+{
+    while (counter <= 20)
+    {
         pthread_mutex_lock(&lock);
-        if (counter % 2 == 0) {
+        if (counter % 2 == 0)
+        {
             printf("Even: %d\n", counter);
             counter++;
         }
@@ -94,10 +107,13 @@ void *print_even(void *arg) {
     return NULL;
 }
 
-void *print_odd(void *arg) {
-    while (counter <= 20) {
+void *print_odd(void *arg)
+{
+    while (counter <= 20)
+    {
         pthread_mutex_lock(&lock);
-        if (counter % 2 != 0) {
+        if (counter % 2 != 0)
+        {
             printf("Odd: %d\n", counter);
             counter++;
         }
@@ -108,14 +124,24 @@ void *print_odd(void *arg) {
 
 // 36. Unsynchronized counter
 int global_counter = 0;
-
-void *increment_counter(void *arg) {
+/*L’output del programma mostra un valore finale del contatore globale (global_counter) che varia ad ogni esecuzione 
+e risulta quasi sempre inferiore a 2.000.000, valore atteso dalla somma di due thread che incrementano ciascuno il contatore 
+1.000.000 di volte. Questa discrepanza è dovuta a una race condition, ovvero una situazione in cui più thread 
+accedono e modificano una risorsa condivisa (in questo caso global_counter) contemporaneamente e senza sincronizzazione. 
+L’operazione global_counter++ non è atomica: viene suddivisa in più istruzioni a basso livello (lettura, incremento, scrittura), 
+che possono interlecciarsi tra i due thread. Di conseguenza, alcuni incrementi vengono persi, perché uno dei due thread può 
+sovrascrivere il risultato dell’altro. Questo spiega perché il valore finale è sempre inferiore e imprevedibile, 
+a meno che non si utilizzi un meccanismo di sincronizzazione (es. pthread_mutex_t) per garantire che solo un thread alla volta 
+modifichi il contatore.*/
+void *increment_counter(void *arg)
+{
     for (int i = 0; i < 1000000; i++)
         global_counter++;
     return NULL;
 }
 
-int main() {
+int main()
+{
     printf("Exercise 31:\n");
     producer_consumer();
 
@@ -124,6 +150,7 @@ int main() {
 
     printf("\nExercise 33:\n");
     pthread_t t1;
+    // TODO: review syntax
     pthread_create(&t1, NULL, print_thread, NULL);
     pthread_join(t1, NULL);
 

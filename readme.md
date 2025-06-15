@@ -31,19 +31,11 @@ divisor (GCD). Use this function in a main program where you read two integers a
 26. Write a program that appends log entries (with timestamps) to a log file every time it is run
 27. Write a program that lists all files in a given directory (use POSIX functions, so this is Linux/Unix specific)
 28. Write a C program that prints the Process ID (PID) and Parent Process ID (PPID) of the running process
-
 29. Write a program that creates a child process using fork(). The parent process should print its PID and the childʼs PID. The child should print its own PID and PPID. Make sure the parent waits for the child to finish
-
 30. Write a program that creates two child processes. Each child should run a CPU-intensive loop printing a message every second. Observe the interleaving of output to understand process scheduling
-
 31. Implement a simple producer-consumer problem using two processes. Use POSIX shared memory and semaphores to synchronize the producer writing an integer to a buffer and the consumer reading it
-
 32. Write a program that creates a pipe for communication between a parent and a child process. The parent sends a message string to the child through the pipe, and the child reads and prints it
-
 33. Write a program that creates a new thread using pthread_create. The thread should print “Hello from threadˮ and terminate. The main program should wait for the thread to finish using pthread_join
-
 34. Modify the previous program to pass an integer argument to the thread function. The thread should print the received number multiplied by 2
-
 35. Write the two thread functions print_even and print_odd so that each prints the even and odd numbers respectively from 0 to 20. Each number should be printed on its own line
-
 36. Write a program that creates two threads incrementing a shared global counter 1 million times each without synchronization. Run multiple times and observe the final counter value. Explain why it differs from the expected value
